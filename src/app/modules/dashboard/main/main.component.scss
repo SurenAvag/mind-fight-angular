@@ -1,0 +1,19 @@
+.wrapper{
+	.title{
+		display: inline-block;
+		text-align: center;
+		font-size: 22px;
+		margin: 70px 0 0 70px;
+		line-height: 1.5;
+	}
+	.tournament{
+		display: inline-block;
+		float: right;
+		margin: 15px 15px 0 0;
+	}
+	.brand{
+		text-decoration: underline;
+		cursor: pointer;
+		font-style: italic;
+	}
+}

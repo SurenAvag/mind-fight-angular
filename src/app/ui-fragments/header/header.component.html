@@ -1,0 +1,41 @@
+<div class="header-wrapper">
+	<div class="left-bar bar">
+		<div class="bar-content" [class.with-content]="isLoggedIn">
+			<img class="logo" src="/favicon.png" alt="logo" />
+			<ul class="menu" *ngIf="isLoggedIn">
+				<li class="menu-item">
+					<a [routerLink]="'/question'">Հարցեր</a>
+				</li>
+				<li class="menu-item border-top">
+					<a (click)="openModal('about')">Մեր մասին</a>
+				</li>
+				<li class="menu-item">
+					<!--<a [routerLink]="'/collection'">collections</a>-->
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="center-bar">
+		<div class="bar-content" [routerLink]="'/'">Գիտամարտ</div>
+		<ng-content></ng-content>
+	</div>
+	<div class="right-bar bar" *ngIf="isLoggedIn">
+		<div class="bar-content with-content" >
+			<span class="user-icon-wrapper">
+				<span class="user-icon">{{user?.firstname[0]}}</span>
+			</span>
+			<ul class="menu">
+				<li class="menu-item">
+					<a [routerLink]="'/user/' + user?.id">Կարգավորումներ</a>
+				</li>
+				<li class="menu-item">
+					<!--<a [routerLink]="'/user'" *ngIf="user?.isAdmin()">manage users</a>-->
+				</li>
+				<li class="menu-item border-top" (click)="logout()">
+					<a>Դուրս գալ</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<app-about [opened]="modals.about"></app-about>

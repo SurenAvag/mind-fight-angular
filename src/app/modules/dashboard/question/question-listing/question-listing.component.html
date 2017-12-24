@@ -1,0 +1,9 @@
+<div class="questions">
+	<div class="content">
+		<div class="name column">Հարց</div>
+		<div class="subject column">Առարկա</div>
+		<div class="level column">Բարդություն</div>
+	</div>
+    <app-single-question *ngFor="let item of items; let i = index" [color]="getColor(i)"
+                         [question]="item"></app-single-question>
+</div>

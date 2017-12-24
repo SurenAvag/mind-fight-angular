@@ -1,0 +1,24 @@
+<div class="login-form-container">
+    <form [formGroup]="loginForm" (submit)="login()" class="login-form">
+        <input id="email_field" class="login-input" formControlName="email" placeholder="email">
+        <control-messages
+                [className]="'color-white'"
+                [submitted]="submitted"
+                [control]="loginForm.get('email')">
+        </control-messages>
+        <div class="password-container">
+            <input id="pass_field" type="password" class="login-input" formControlName="password"  placeholder="password">
+            <control-messages
+                    [className]="'color-white'"
+                    [submitted]="submitted"
+                    [control]="loginForm.get('password')">
+            </control-messages>
+            <button *ngIf="!loading" class="login-submit background-blue">
+                <i class="fa fa-arrow-right"></i>
+            </button>
+            <img [hidden]="!loading" src="./assets/images/loader.gif" class="login-loader" [class.bottom-103-px]="error?.length">
+        </div>
+        <input type="submit" class="display-none" />
+        <div class="error">{{error}}</div>
+    </form>
+</div>

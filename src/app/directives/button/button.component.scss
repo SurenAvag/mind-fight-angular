@@ -1,0 +1,40 @@
+.button{
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #0D68e1 !important;
+    min-width: 223px;
+    min-height: 44px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    .icon-edit, .icon-remove{
+        display: none;
+    }
+    &.primary{
+        color: white;
+        background-color: #0D68e1 !important;
+    }
+    &.default{
+        color: #b1b1b1;
+        background-color: #E8E8E8;
+    }
+    &.warning{
+        color: white;
+        background-color: #ed2800;
+    }
+    &.with-opacity{
+        color: white;
+    }
+    &.discard{
+       @extend .default;
+        .icon-remove {
+            display: inline;
+            float: left;
+            padding-left: 5px;
+            margin-top: 3px;
+            font-size: 17px;
+            color: #b1b1b1;
+        }
+    }
+}

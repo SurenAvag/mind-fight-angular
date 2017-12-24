@@ -1,0 +1,8 @@
+<div class="container">
+	<span class="label">{{name}}</span>
+	<span class="border"></span>
+	<span class="input-container" [class.disabled]="disabled">
+		<input type="text" class="text-edit text" [(ngModel)]="value"
+		       *ngIf="type == inputTypes.text" (blur)="saveItem()" title="name">
+	</span>
+</div>

@@ -1,0 +1,7 @@
+<div (click)="closeModal($event)" class="modal fade support-modal" id="support" role="dialog" [class.hidden]="!opened" data-dismiss>
+	<div class="modal-dialog" [class.overflow-unset]="overflowUnset" [style.width.px]="width" [style.maxHeight.px]="height" [style.top]="top">
+		<div class="modal-content support-content">
+			<ng-content></ng-content>
+		</div>
+	</div>
+</div>

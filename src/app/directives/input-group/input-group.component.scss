@@ -1,0 +1,37 @@
+$editBackground: #f8f8f8;
+$wheat: #95989A;
+.container {
+    font-size: 18px;
+    height: 65px;
+    background-color: $editBackground;
+    opacity: 0.95;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    margin-bottom: 3px;
+    .input-container {
+        &.disabled{
+            opacity: 0.3;
+        }
+        .text-edit {
+            border: none;
+            font-size: inherit;
+            outline: none;
+            background-color: $editBackground;
+            width: 100%;
+            color: #4c4c4c;
+        }
+    }
+    .border {
+        height: 65px;
+        width: 3px;
+        background-color: white;
+        margin-left: -9px;
+        margin-right: 10px;
+    }
+    .label {
+        display: inline-block;
+        width: 235px;
+        color: $wheat;
+    }
+}

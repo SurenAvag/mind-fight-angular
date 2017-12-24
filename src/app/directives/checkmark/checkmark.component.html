@@ -1,0 +1,10 @@
+<span class="check" [class.checked]="checked" [class.submitted]="submitted">
+	<i class="icon-circle" *ngIf="!checked" [class.clickable]="clickable" (click)="toggleCheck(true)"></i>
+	<span class="check-icon" *ngIf="checked" [class.clickable]="clickable"
+	      [class.blue-gradient]="constant('checkmarkTypes').constant == type"
+	      (click)="toggleCheck(false)" [class.green-gradient]="constant('checkmarkTypes').selectable == type">
+		<i class="icon-checkmark"></i>
+	</span>
+	<img src="./assets/images/shadow.png" class="shadow" *ngIf="checked">
+</span>
+
