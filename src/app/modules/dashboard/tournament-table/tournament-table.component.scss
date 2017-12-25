@@ -9,6 +9,9 @@
 			margin-bottom: 5px;
 			.name{
 				width: 90px;
+				&.italic{
+					font-weight: bold;
+				}
 			}
 			.type{
 				font-style: italic;

@@ -1,1 +1,16 @@
 <input-group [name]="'Հարց'" [value]="question?.text" [type]="constant('inputTypes').text"></input-group>
+<input-group [name]="'Թեմա'" [value]="question?.topic?.name" [type]="constant('inputTypes').text"></input-group>
+<input-group [name]="'Բարդություն'" [value]="question?.levelName" [type]="constant('inputTypes').text"></input-group>
+<input-group [name]="'Ժամանակ'" [value]="question?.time + ' րոպե'" [type]="constant('inputTypes').text"></input-group>
+
+<div class="answers">
+	<app-content>
+		<h2>Պատասխաններ</h2>
+		<input-group *ngFor="let answer of question.answers; let i=index"
+		             [value]="answer?.text" [name]="'Պատասխան ' + (i + 1)"
+		             [type]="constant('inputTypes').text">
+			<checkmark [checked]="answer.is_true_answer" class="checkmark"></checkmark>
+		</input-group>
+
+	</app-content>
+</div>

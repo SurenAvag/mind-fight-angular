@@ -5,7 +5,10 @@ export class Question extends BaseModel {
     text: string;
     level: number;
     levelName: string;
+    time: number;
     subject: any; //@Todo change to Subject model
+    topic: any; //@Todo change to Subject model
+    answers: any[]; //@Todo change to Subject model
     
     public static readonly LEVELS = {
         'easy': 1,
@@ -19,6 +22,9 @@ export class Question extends BaseModel {
         this.text = data.text;
         this.level = data.level;
         this.subject = data.subject;
+        this.topic = data.topic;
+        this.answers = data.answers;
+        this.time = data.time;
         this.levelName = this.getLevelName();
     }
 

@@ -1,0 +1,10 @@
+<div class="content">
+	<div class="title">{{question.text}}</div>
+	<div class="answers">
+		<div class="answer-group" *ngFor="let answer of question.answers">
+			<checkmark [clickable]="true" (toggle)="changeSelectedAnswer(answer.id)"
+			           [checked]="answer.id == answerIds[question.id]" class="check"></checkmark>
+			<span class="text">{{answer.text}}</span>
+		</div>
+	</div>
+</div>

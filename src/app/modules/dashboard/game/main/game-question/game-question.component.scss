@@ -1,0 +1,23 @@
+.content{
+	border: 1px dashed;
+	margin-bottom: 10px;
+	padding: 10px;
+	.title{
+		font-size: 18px;
+		font-weight: bold;
+		margin: 10px 0;
+	}
+	.answers{
+		.answer-group{
+			display: flex;
+			align-items: center;
+			.check{
+				display: inline-block;
+			}
+			.text{
+				font-style: italic;
+				margin-left: 10px;
+			}
+		}
+	}
+}

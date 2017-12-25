@@ -5,10 +5,7 @@ $wheat: #95989A;
     width: 25px;
     height: 25px;
     display: block;
-    &.checked {
-        color: rgb(132, 208, 140);
-    }
-
+    font-size: 22px;
     &.submitted{
         .icon-circle{
             color: red;
@@ -16,10 +13,11 @@ $wheat: #95989A;
     }
     .checkmark{
         color: white;
-        font-size: 18px;
         padding: 0 2px 0 5px;
     }
     .check-icon{
+        left: -3px;
+        color: #62E44E;
         z-index: 90;
         position: relative;
         height: 25px;
@@ -28,36 +26,15 @@ $wheat: #95989A;
         justify-content: center;
         width: 25px;
         border-radius: 30px;
-        font-size: 14px;
-        color: white;
-        background-color: #00b981;
         text-align: center;
-        @extend .green-gradient;
         i{
             padding-right: 1px;
-        }
-        &.green-gradient{
-            background-image: -ms-linear-gradient(top, #77DE00 0%, #14CAEB 100%);
-            background-image: -moz-linear-gradient(top, #77DE00 0%, #14CAEB 100%);
-            background-image: -o-linear-gradient(top, #77DE00 0%, #14CAEB 100%);
-            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #77DE00), color-stop(100, #14CAEB));
-            background-image: -webkit-linear-gradient(top, #77DE00 0%, #14CAEB 100%);
-            background-image: linear-gradient(to bottom, #77DE00 0%, #14CAEB 100%);
-        }
-        &.blue-gradient{
-            background-image: -ms-linear-gradient(bottom, #0E68E2 0%, #14CAEB 100%);
-            background-image: -moz-linear-gradient(bottom, #0E68E2 0%, #14CAEB 100%);
-            background-image: -o-linear-gradient(bottom, #0E68E2 0%, #14CAEB 100%);
-            background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0E68E2), color-stop(100, #14CAEB));
-            background-image: -webkit-linear-gradient(bottom, #0E68E2 0%, #14CAEB 100%);
-            background-image: linear-gradient(to top, #0E68E2 0%, #14CAEB 100%);
         }
     }
     .icon-circle{
         color: #dddddd;
         position: relative;
         z-index: 90;
-        font-size: 25px;
     }
     .icon-circle-check{
         //box-shadow: 4px 5px 25px -3px #666;
@@ -67,7 +44,6 @@ $wheat: #95989A;
         background-color: white;
     }
     .circle{
-        font-size: 30px;
         color: $wheat;
     }
     .clickable{

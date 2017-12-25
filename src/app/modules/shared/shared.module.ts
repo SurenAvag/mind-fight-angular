@@ -10,14 +10,16 @@ import {RouterModule} from '@angular/router';
 import {LoaderComponent} from '../../ui-fragments/loader';
 import {AboutComponent} from '../../ui-fragments/about';
 import {LoginModalComponent} from '../../ui-fragments/login-modal';
+import {DropdownModule} from 'primeng/primeng';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		ReactiveFormsModule,
 		FormsModule,
-		RouterModule
-	],
+		RouterModule,
+        DropdownModule,
+    ],
 	declarations: [
 		CheckmarkComponent,
 		ButtonComponent,
@@ -27,7 +29,7 @@ import {LoginModalComponent} from '../../ui-fragments/login-modal';
 		FooterComponent,
 		LoaderComponent,
         LoginModalComponent,
-		InputGroupComponent
+		InputGroupComponent,
 	],
 	exports: [
         ReactiveFormsModule,

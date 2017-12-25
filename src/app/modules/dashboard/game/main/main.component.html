@@ -1,0 +1,34 @@
+<app-content [withoutScroll]="true">
+	<div class="questions">
+		<app-game-question *ngFor="let question of game?.questions" [question]="question" [answerIds]="answerIds"></app-game-question>
+		<app-loader *ngIf="loading"></app-loader>
+		<div class="timer">
+			<app-content>
+				<div class="time">Մնաց {{game?.time}} րոպե</div>
+				<div class="count">Չպատասխանված հարցերի քանակ։ {{getAnswerIdsLength()}}</div>
+				<div class="end">
+					<app-button (click)="submit()">Ավարտել</app-button>
+				</div>
+			</app-content>
+		</div>
+	</div>
+</app-content>
+<login-modal [opened]="modals.ended" (close)="modalClosed()">
+	<div class="ended">
+		<div class="end-process" *ngIf="endProcess">
+			<div>Ձեր ժամանակն ավարտվեց</div>
+			<div>Խնդրում ենք սպասել մինչ համակարգն կընդունի ձեր պատասխաններն</div>
+			<app-loader></app-loader>
+		</div>
+		<div class="response" *ngIf="!endProcess">
+			<div *ngIf="points != 0">
+				<div>Շնորհավորում ենք, դուք հավաքել եք {{points}} միավոր</div>
+				<div>Շարունակեք խաղալ ու ամրապնդել ձեր գիտելիքներն</div>
+			</div>
+			<div *ngIf="points == 0">
+				<div>Ցավոք այս անգամ ձեր գիտելիքներն չբավարարեցին պատասխանելու մեր հարցերին</div>
+				<div>Ամրապնդեք ձեր գիտելիքներն և փորձեք նորից</div>
+			</div>
+		</div>
+	</div>
+</login-modal>

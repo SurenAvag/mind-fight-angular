@@ -1,8 +1,10 @@
 <div class="container">
-	<span class="label">{{name}}</span>
+	<span class="label"><ng-content></ng-content> {{name}}</span>
 	<span class="border"></span>
 	<span class="input-container" [class.disabled]="disabled">
 		<input type="text" class="text-edit text" [(ngModel)]="value"
 		       *ngIf="type == inputTypes.text" (blur)="saveItem()" title="name">
+		<p-dropdown class="text-edit" [(ngModel)]="value"
+		            *ngIf="type == inputTypes.dropdown" (blur)="saveItem()" title="name"></p-dropdown>
 	</span>
 </div>

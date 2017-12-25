@@ -8,12 +8,15 @@ import {QuestionService} from './services';
 import { QuestionSingleComponent } from './question-single';
 import {QuestionResolve} from './resolvers/question.resolve';
 import {SharedModule} from '../../shared';
+import {FormModule} from '../../shared/form.module';
+import {LoggedInModule} from '../../shared/logged-in.module';
 
 @NgModule({
     imports: [
         CommonModule,
         QuestionRoutingModule,
-        SharedModule
+        SharedModule,
+        LoggedInModule
     ],
     declarations: [
         QuestionComponent,

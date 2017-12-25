@@ -4,4 +4,5 @@ export const inputTypes = {
 	dropdown: 3,
 	toggle: 4,
 	checkmark: 5,
+	
 };
