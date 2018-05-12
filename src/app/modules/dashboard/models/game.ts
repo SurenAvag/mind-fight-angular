@@ -5,7 +5,7 @@ export class Game extends BaseModel {
     id:number;
     name: string;
     questions: Question[];
-    time: number
+    time: number;
     
     constructor(data: any) {
         super();

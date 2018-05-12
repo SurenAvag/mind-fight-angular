@@ -5,5 +5,6 @@
 
 export const environment = {
     production: false,
-    restClient: 'http://localhost:8000/api/v1/'
+    restClient: 'http://localhost:8000/api/v1/',
+    socketUrl: 'http://localhost:8200',
 };

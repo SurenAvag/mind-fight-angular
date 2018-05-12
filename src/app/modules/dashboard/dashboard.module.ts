@@ -8,6 +8,8 @@ import {SharedModule} from '../shared';
 import {LoggedInModule} from '../shared/logged-in.module';
 import {FormModule} from '../shared/form.module';
 import {TournamentTableComponent} from './tournament-table/tournament-table.component';
+import { StartGameComponent } from './start-game/start-game.component';
+import { OnlineUsersListComponent } from './online-users-list/online-users-list.component';
 
 @NgModule({
     imports: [
@@ -20,7 +22,9 @@ import {TournamentTableComponent} from './tournament-table/tournament-table.comp
     declarations: [
         DashboardComponent,
         MainComponent,
-        TournamentTableComponent
+        TournamentTableComponent,
+        StartGameComponent,
+        OnlineUsersListComponent
     ],
     providers: [
         UserService

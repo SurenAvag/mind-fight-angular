@@ -9,8 +9,8 @@ export class GameService extends CommonService {
         super();
     }
     
-    public getGame(): Promise<any> {
-        return this.http.get(`game`)
+    public getGame(query: string = ''): Promise<any> {
+        return this.http.get(`game${query}`)
             .toPromise()
             .then((res: Response) => {
                 return this.extractData(res, 'Game');

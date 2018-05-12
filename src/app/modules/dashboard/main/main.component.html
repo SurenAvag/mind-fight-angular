@@ -4,11 +4,12 @@
 			<div>Ուզում ես փորձել գիտելիքներդ</div>
 			<div>ուրեմն մասնակցիր <span class="brand" (click)="openModal('about')">Գիտամարտին</span></div>
 			<div>և զարգացրու գիտելիքներդ</div>
-			<app-button [routerLink]="'/game'">Սկսիր խաղը</app-button>
+			<app-button (click)="openModal('subjects')">Սկսիր խաղը</app-button>
 		</app-content>
 	</div>
 	<div class="tournament">
 		<app-tournament-table></app-tournament-table>
 	</div>
 </div>
+<app-start-game [opened]="modals.subjects"></app-start-game>
 <app-about [opened]="modals.about"></app-about>

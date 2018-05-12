@@ -9,7 +9,6 @@ export abstract class BaseComponent implements OnInit, OnDestroy{
 	ngOnInit() {}
 	
 	public openModal(modalName: string) : void {
-		console.log(modalName);
 		this.modals[modalName]++;
 	}
 	

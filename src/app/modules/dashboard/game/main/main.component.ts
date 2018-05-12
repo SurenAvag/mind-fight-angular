@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BaseComponent} from '../../../../base.component';
 import {GameService} from '../services/game.service';
 import {Game} from '../../models';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-main',
@@ -21,17 +21,21 @@ export class MainComponent extends BaseComponent implements OnInit {
     };
     constructor(
         private gameService: GameService,
-        private router: Router
+        private router: Router,
+        private activatedRoute: ActivatedRoute
     ) {
         super();
-        this.getGame();
+        this.subscriptions.push(this.activatedRoute.queryParams.subscribe((params) => {
+            this.getGame(params['subjectId'], params['secondPlayerId']);
+    
+        }));
     }
     
     ngOnInit() {
     }
     
-    private getGame(): void {
-        this.gameService.getGame()
+    private getGame(subjectId: number, secondPlayerId: number = null): void {
+        this.gameService.getGame(`?forTwoPlayer=${secondPlayerId ? 1 : 0}&subjectId=${subjectId}&secondPlayerId=${secondPlayerId}`)
             .then((res: Game) => {
                 this.game = res;
                 this.loading = false;

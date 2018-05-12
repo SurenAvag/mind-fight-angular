@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import { User } from '../models';
 import { Subject }    from 'rxjs/Subject';
 import {UserLogin} from '../interfaces';
+import {SocketService} from './socket.service';
 
 @Injectable()
 export class AuthService extends CommonService {
@@ -19,7 +20,7 @@ export class AuthService extends CommonService {
 
     constructor(
         private http: HttpClientService,
-        // private socketService: SocketService,
+        private socketService: SocketService,
       ) {
             super();
     }
@@ -29,6 +30,8 @@ export class AuthService extends CommonService {
             .toPromise()
             .then((res: Response) => {
                 this.user = this.extractData(res, 'User');
+                this.socketService.disconnectFromSocket();
+                this.socketService.initialize(this.user.apiToken);
                 this.setToken(this.user);
                 return this.user;
             })
@@ -47,7 +50,7 @@ export class AuthService extends CommonService {
     public checkUser(): Promise<any>  {
         let token: string = localStorage.getItem('token');
         this.http.setAuth(token);
-        // this.socketService.initialize(token)
+        this.socketService.initialize(token);
         return this.http.get(`me`)
             .toPromise()
             .then((res: Response) => {
@@ -61,7 +64,7 @@ export class AuthService extends CommonService {
     private setToken(user: User, setAuth: boolean = true, setToken: boolean = true): void {
         localStorage.setItem('user', JSON.stringify(user));
         setToken && localStorage.setItem('token', user.apiToken);
-        // setToken && this.socketService.initialize(user.api_token)
+        setToken && this.socketService.initialize(user.apiToken);
         setAuth && this.http.setAuth(user.apiToken);
         this.setLoginState(true);
         this.isLoggedIn = true;

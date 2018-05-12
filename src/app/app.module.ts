@@ -8,6 +8,7 @@ import {HttpClientService} from './services/http-client.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import {SharedModule} from './modules/shared';
+import {SocketService} from './services/socket.service';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,10 @@ import {SharedModule} from './modules/shared';
         AuthGuard,
         AuthService,
         HttpClientService,
+        SocketService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }

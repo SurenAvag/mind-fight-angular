@@ -1,0 +1,23 @@
+<login-modal [width]="830" [opened]="opened">
+	<div class="wrapper">
+		<div class="subjects-wrapper">
+			<div class="title">Ընտրիր առարկան</div>
+			<div class="subjects">
+				<div class="subject"
+				     *ngFor="let subject of subjects; let index = index"
+				     (click)="selectSubject(subject)"
+				     [class.selected]="selectedSubject?.id == subject.id"
+				     [style.backgroundColor]="index % 2 == 0 ? 'rgb(248, 248, 248)' : 'rgb(253, 253, 253)'">
+					<span class="name">{{subject.name}}</span>
+				</div>
+			</div>
+			<div class="actions">
+				<app-button (click)="startGame()">Սկսել միայնակ</app-button>
+				<app-button (click)="inviteToGame()">Հրավիրել մրցման</app-button>
+			</div>
+		</div>
+		<div class="online-users">
+			<app-online-users-list (userSelect)="userSelected($event)"></app-online-users-list>
+		</div>
+	</div>
+</login-modal>

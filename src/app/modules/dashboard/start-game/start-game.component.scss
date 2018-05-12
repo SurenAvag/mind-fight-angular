@@ -1,0 +1,37 @@
+.wrapper {
+    .subjects-wrapper {
+        display: inline-block;
+        width: 500px;
+        padding: 0 25px 0 0;
+        .title {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .subjects {
+            max-height: 500px;
+            .subject {
+                cursor: pointer;
+                line-height: 1.5;
+                padding: 10px;
+                &:hover, &.selected {
+                    //background-color: rgb(193, 193, 193) !important;
+                    background-color:  #0D68e1 !important;
+                    color: white;
+                }
+                .name {
+
+                }
+            }
+        }
+        .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .online-users{
+        display: inline-block;
+        vertical-align: top;
+        width: 270px;
+    }
+}
