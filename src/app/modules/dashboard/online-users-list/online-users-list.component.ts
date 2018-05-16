@@ -39,7 +39,6 @@ export class OnlineUsersListComponent extends BaseComponent implements OnInit {
     
     public setOnlineUsers(users: User[]): void {
         this.users = users;
-        console.log(this.users);
     }
     
     public userSelected(user: User) : void {

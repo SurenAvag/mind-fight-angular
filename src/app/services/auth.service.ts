@@ -30,6 +30,7 @@ export class AuthService extends CommonService {
             .toPromise()
             .then((res: Response) => {
                 this.user = this.extractData(res, 'User');
+                User.authUser = this.user;
                 this.socketService.disconnectFromSocket();
                 this.socketService.initialize(this.user.apiToken);
                 this.setToken(this.user);
@@ -55,6 +56,7 @@ export class AuthService extends CommonService {
             .toPromise()
             .then((res: Response) => {
 	            this.user = this.extractData(res, `User`);
+	            User.authUser = this.user;
                 this.setToken(this.user, false, false);
                 return this.user;
             })

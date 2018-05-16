@@ -3,6 +3,7 @@ import {BaseComponent} from '../../../../base.component';
 import {GameService} from '../services/game.service';
 import {Game} from '../../models';
 import {ActivatedRoute, Router} from '@angular/router';
+import {GameEnded} from '../interfaces/game-ended';
 
 @Component({
     selector: 'app-main',
@@ -16,26 +17,27 @@ export class MainComponent extends BaseComponent implements OnInit {
     public game: any;
     public endProcess: boolean = false;
     public points: number = 0;
+    private gameId: number;
+    public gameEndData: GameEnded;
     public modals = {
         ended: 0,
     };
+    
     constructor(
         private gameService: GameService,
         private router: Router,
         private activatedRoute: ActivatedRoute
     ) {
         super();
-        this.subscriptions.push(this.activatedRoute.queryParams.subscribe((params) => {
-            this.getGame(params['subjectId'], params['secondPlayerId']);
-    
-        }));
     }
     
     ngOnInit() {
+        this.gameId = this.activatedRoute.snapshot.params['id'];
+        this.getGame()
     }
     
-    private getGame(subjectId: number, secondPlayerId: number = null): void {
-        this.gameService.getGame(`?forTwoPlayer=${secondPlayerId ? 1 : 0}&subjectId=${subjectId}&secondPlayerId=${secondPlayerId}`)
+    private getGame(): void {
+        this.gameService.getGameById(this.gameId)
             .then((res: Game) => {
                 this.game = res;
                 this.loading = false;
@@ -53,7 +55,7 @@ export class MainComponent extends BaseComponent implements OnInit {
                 this.submit();
                 clearInterval(this.gameInterval);
             }
-        }, 60000);
+        }, 10);
     }
     
     public submit(): void{
@@ -65,9 +67,10 @@ export class MainComponent extends BaseComponent implements OnInit {
     
     public endGame(): void {
         this.gameService.endGame(this.game.id, this.answerIds)
-            .then((res) => {
+            .then((res: GameEnded) => {
                 this.endProcess = false;
                 this.points = Number(res.points);
+                this.gameEndData = res;
             })
             .catch((e: string) => {
                 console.log(e);

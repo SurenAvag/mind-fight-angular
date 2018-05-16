@@ -9,6 +9,8 @@ export class User extends BaseModel {
     point: string;
     type: number;
     apiToken: string;
+    
+    public static authUser;
 
 	public static readonly TYPES = {
         student   : 1,

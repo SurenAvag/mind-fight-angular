@@ -10,6 +10,7 @@ import {FormModule} from '../shared/form.module';
 import {TournamentTableComponent} from './tournament-table/tournament-table.component';
 import { StartGameComponent } from './start-game/start-game.component';
 import { OnlineUsersListComponent } from './online-users-list/online-users-list.component';
+import { GameInvitationComponent } from './game-invitation/game-invitation.component';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { OnlineUsersListComponent } from './online-users-list/online-users-list.
         MainComponent,
         TournamentTableComponent,
         StartGameComponent,
-        OnlineUsersListComponent
+        OnlineUsersListComponent,
+        GameInvitationComponent
     ],
     providers: [
         UserService

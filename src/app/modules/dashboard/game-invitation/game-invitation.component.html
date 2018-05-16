@@ -1,0 +1,24 @@
+<login-modal [opened]="modals.main" [width]="450" (close)="cancel()">
+	<div class="wrapper" *ngIf="invitationData">
+		<div class="title">
+			Մրցույթի հրավեր
+		</div>
+		<div class="content">
+			{{invitationData.user.firstname}}ը(<i>{{invitationData.user.typeName}}</i>) հրավիրում է Ձեզ մրցույթի՝
+			փորձելու <b>{{invitationData.game.subject.name}}</b> առարկայի գիտելիքները
+		</div>
+		<div class="actions">
+			<app-button [width]="'160px'" [height]="'35px'" (click)="submit()">Ընդունել</app-button>
+			<app-button [width]="'160px'" [height]="'35px'" [type]="'warning'" (click)="cancel()">Մերժել</app-button>
+		</div>
+	</div>
+	<div class="wrapper" *ngIf="!invitationData">
+		<div class="title">
+			Հրավերը չեղարկվեց
+		</div>
+		<div class="actions">
+			<app-button [width]="'160px'" [height]="'35px'" (click)="leave()">Փակել</app-button>
+		</div>
+	</div>
+</login-modal>
+

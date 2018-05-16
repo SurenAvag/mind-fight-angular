@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { environment } from '../../environments/environment';
 import * as io from "socket.io-client";
-import {User} from '../models';
+import {Game, User} from '../models';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class SocketService {
@@ -20,14 +21,37 @@ export class SocketService {
     public initialize(token: string): void {
         if (!this.socketClient) {
             this.socketClient = io.connect(this.socketUrl, {query: {accessToken: token}});
-            this.socketClient.on("connect", (msg: any) => {
-                this.socketSubject.next({name: 'connect', message: 'user connected'});
-            });
-            this.socketClient.on('disconnect', () => {
-                console.log('user disconnected');
-            });
+            
+            this.onConnect();
+            this.onDisconnect();
             this.onlineUserListChanged();
+            this.onGameInvitation();
+            this.onGameDeleted();
+            this.onGameStarted();
         }
+    }
+    
+    public onGameStarted(): void {
+        this.socketClient.on(`game-started`, (res: any) => {
+            this.socketSubject.next({
+                name: 'game-started', message: {
+                    user: User.transform(res.user),
+                    game: Game.transform(res.game),
+                }
+            });
+        });
+    }
+    
+    public onDisconnect(): void {
+        this.socketClient.on('disconnect', () => {
+            console.log('user disconnected');
+        });
+    }
+    
+    public onConnect(): void {
+        this.socketClient.on("connect", (msg: any) => {
+            this.socketSubject.next({name: 'connect', message: 'user connected'});
+        });
     }
     
     public disconnectFromSocket(): void {
@@ -39,6 +63,30 @@ export class SocketService {
         this.socketClient.on(`online-user-list-changed`, (res: any) => {
             this.onlineUsers = User.transformCollection(res);
             this.socketSubject.next({name: 'online-user-list-changed', message: this.onlineUsers});
+        });
+    }
+    
+    public onGameDeleted(): void {
+        this.socketClient.on(`game-deleted`, (res: any) => {
+            if(res.deletedByUser.id != User.authUser.id) {
+                this.socketSubject.next({
+                    name: 'game-deleted', message: {
+                        deletedByUser: User.transform(res.deletedByUser),
+                        game: Game.transform(res.game),
+                    }
+                });
+            }
+        });
+    }
+    
+    public onGameInvitation(): void {
+        this.socketClient.on(`game-invitation`, (res: any) => {
+            this.socketSubject.next({name: 'game-invitation', message: {
+                    user: User.transform(res.user),
+                    invitedUser: User.transform(res.invitedUser),
+                    game: Game.transform(res.game),
+                }
+            });
         });
     }
 }

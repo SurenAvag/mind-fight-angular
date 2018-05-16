@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClientService} from '../../../../services/http-client.service';
 import {CommonService} from '../../../../services/common.service';
 import {Response} from '@angular/http';
+import {Game} from '../../models';
 
 @Injectable()
 export class GameService extends CommonService {
@@ -18,8 +19,35 @@ export class GameService extends CommonService {
             .catch(this.handleError);
     }
     
+    public getGameById(id: number): Promise<any> {
+        return this.http.get(`game/${id}`)
+            .toPromise()
+            .then((res: Response) => {
+                return this.extractData(res, 'Game');
+            })
+            .catch(this.handleError);
+    }
+    
     public endGame(id: number, answers: number[]): Promise<any> {
         return this.http.post(`game/${id}/end`, {answers: answers})
+            .toPromise()
+            .then((res: Response) => {
+                return this.extractData(res);
+            })
+            .catch(this.handleError);
+    }
+    
+    public startGame(game: Game): Promise<any> {
+        return this.http.post(`game/${game.id}/join`)
+            .toPromise()
+            .then((res: Response) => {
+                return this.extractData(res);
+            })
+            .catch(this.handleError);
+    }
+    
+    public removeGame(game: Game): Promise<any> {
+        return this.http.delete(`game/${game.id}`)
             .toPromise()
             .then((res: Response) => {
                 return this.extractData(res);

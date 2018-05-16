@@ -12,7 +12,7 @@
 				</div>
 			</div>
 			<div class="actions">
-				<app-button (click)="startGame()">Սկսել միայնակ</app-button>
+				<app-button (click)="startGame()">Սկսել մենակ</app-button>
 				<app-button (click)="inviteToGame()">Հրավիրել մրցման</app-button>
 			</div>
 		</div>
@@ -20,4 +20,27 @@
 			<app-online-users-list (userSelect)="userSelected($event)"></app-online-users-list>
 		</div>
 	</div>
+	
+	<login-modal [opened]="modals.waitForInvitation" [width]="400" (close)="cancelInvite()">
+		<div class="wait-content" *ngIf="game">
+			<div class="content">
+				Խնդրում ենք սպասել մինչև օգտատերը կպատասխանի հրավերին
+			</div>
+			<app-loader class="loader"></app-loader>
+			<div class="actions">
+				<app-button [width]="'160px'" [height]="'35px'" [type]="'warning'" (click)="cancelInvite()">
+					Չեղարկել
+				</app-button>
+			</div>
+		</div>
+		<div class="wait-content" *ngIf="!game">
+			<div class="content">Օգտատերը մերժեց խաղի հրավերը</div>
+			<div class="actions">
+				<app-button [width]="'160px'" [height]="'35px'" (click)="leaveWaitModal()">
+					Փակել
+				</app-button>
+			</div>
+		</div>
+		
+	</login-modal>
 </login-modal>

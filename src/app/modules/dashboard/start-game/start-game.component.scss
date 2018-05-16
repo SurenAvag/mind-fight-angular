@@ -9,7 +9,8 @@
             margin-bottom: 15px;
         }
         .subjects {
-            max-height: 500px;
+            max-height: 360px;
+            overflow: auto;
             .subject {
                 cursor: pointer;
                 line-height: 1.5;
@@ -33,5 +34,11 @@
         display: inline-block;
         vertical-align: top;
         width: 270px;
+    }
+}
+.wait-content{
+    text-align: center;
+    .loader {
+        margin: 20px 0 7px;
     }
 }

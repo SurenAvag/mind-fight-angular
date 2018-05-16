@@ -13,13 +13,10 @@ const GameRoutes: Routes = [
                 path: '',
                 component: MainComponent
             },
-            // {
-            //     path: ':id',
-            //     component: QuestionSingleComponent,
-            //     resolve: {
-            //         question: QuestionResolve
-            //     }
-            // }
+            {
+                path: ':id',
+                component: MainComponent,
+            }
         ],
     }
 ];
