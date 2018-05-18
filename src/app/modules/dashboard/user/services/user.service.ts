@@ -20,4 +20,22 @@ export class UserService extends CommonService {
             })
             .catch(this.handleError);
     }
+    
+    public getUser(id: number): Promise<any>  {
+        return this.http.get(`user/${id}`)
+            .toPromise()
+            .then((res: Response) => {
+                return this.extractData(res, 'User');
+            })
+            .catch(this.handleError);
+    }
+    
+    public getUserKeyWordsGraph(subjectId) : Promise<any> {
+        return this.http.get(`get-key-words-graph/${subjectId}`)
+            .toPromise()
+            .then((res: Response) => {
+                return this.extractData(res, 'Graph');
+            })
+            .catch(this.handleError);
+    }
 }

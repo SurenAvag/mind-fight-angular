@@ -6,6 +6,7 @@ export class Game extends BaseModel {
     name: string;
     questions: Question[];
     time: number;
+    forTwoPlayer: boolean;
     subject: Subject;
     
     constructor(data: any) {
@@ -14,6 +15,7 @@ export class Game extends BaseModel {
         this.name = data.name;
         this.questions = Question.transformCollection(data.questions || []);
         this.time = data.time;
+        this.forTwoPlayer = data.forTwoPlayer;
         this.subject = Subject.transform(data.subject || {});
     }
     

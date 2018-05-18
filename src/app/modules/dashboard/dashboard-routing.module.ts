@@ -17,12 +17,14 @@ const dashboardRoutes: Routes = [
             {
                 path: 'question',
                 loadChildren: './question/question.module#QuestionModule',
-                canActivate: [ AuthGuard ]
+            },
+            {
+                path: 'user',
+                loadChildren: './user/user.module#UserModule',
             },
             {
                 path: 'game',
                 loadChildren: './game/game.module#GameModule',
-                canActivate: [ AuthGuard ]
             },
         ],
     }

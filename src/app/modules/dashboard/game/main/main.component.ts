@@ -55,7 +55,7 @@ export class MainComponent extends BaseComponent implements OnInit {
                 this.submit();
                 clearInterval(this.gameInterval);
             }
-        }, 10);
+        }, 60000);
     }
     
     public submit(): void{

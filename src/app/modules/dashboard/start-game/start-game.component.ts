@@ -85,7 +85,7 @@ export class StartGameComponent extends BaseComponent implements OnInit {
     }
     
     private persistResponse(game: Game): void {
-        if(this.selectedUser){
+        if(game.forTwoPlayer){
             this.game = game;
             this.openModal('waitForInvitation');
         } else {

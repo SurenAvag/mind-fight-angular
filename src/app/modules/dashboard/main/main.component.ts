@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 export class MainComponent extends BaseComponent implements OnInit {
     public modals = {
         about: 0,
-        subjects: 1,
+        subjects: 0,
     };
     constructor(
     
