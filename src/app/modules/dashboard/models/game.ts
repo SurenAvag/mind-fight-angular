@@ -7,6 +7,7 @@ export class Game extends BaseModel {
     questions: Question[];
     time: number;
     forTwoPlayer: boolean;
+    ended: boolean
     subject: Subject;
     
     constructor(data: any) {

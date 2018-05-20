@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import * as io from "socket.io-client";
 import {Game, User} from '../models';
 import {AuthService} from './auth.service';
+import {GameEnded} from '../modules/dashboard/game/interfaces/game-ended';
 
 @Injectable()
 export class SocketService {
@@ -28,6 +29,7 @@ export class SocketService {
             this.onGameInvitation();
             this.onGameDeleted();
             this.onGameStarted();
+            this.onGameEnded();
         }
     }
     
@@ -39,6 +41,12 @@ export class SocketService {
                     game: Game.transform(res.game),
                 }
             });
+        });
+    }
+    
+    public onGameEnded(): void {
+        this.socketClient.on(`game-ended`, (res: GameEnded) => {
+            this.socketSubject.next({name: 'game-ended', message: res});
         });
     }
     
@@ -78,6 +86,8 @@ export class SocketService {
             }
         });
     }
+    
+    
     
     public onGameInvitation(): void {
         this.socketClient.on(`game-invitation`, (res: any) => {

@@ -1,4 +1,5 @@
 export const environment = {
     production: true,
-    restClient: 'http://localhost:8000/api/v1/'
+    restClient: 'http://37.186.123.216:8055/api/v1/',
+    socketUrl: 'http://localhost:8200',
 };

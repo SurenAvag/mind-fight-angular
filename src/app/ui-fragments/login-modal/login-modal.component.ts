@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
 
-@Component({
+@
+    Component({
 	selector: 'login-modal',
 	templateUrl: './login-modal.component.html',
 	styleUrls: ['./login-modal.component.scss']

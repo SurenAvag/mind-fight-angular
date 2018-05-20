@@ -10,13 +10,16 @@ import {UserService} from './services';
 import {SharedModule} from '../../shared';
 
 import {LoggedInModule} from '../../shared/logged-in.module';
+import {DropdownModule} from 'primeng/dropdown';
+import {SubjectService} from '../subject/services/subject.service';
 
 @NgModule({
     imports: [
         CommonModule,
         UserRoutingModule,
         SharedModule,
-        LoggedInModule
+        LoggedInModule,
+        DropdownModule
     ],
     declarations: [
         UserComponent,
@@ -26,7 +29,8 @@ import {LoggedInModule} from '../../shared/logged-in.module';
     ],
     providers: [
         UserResolve,
-        UserService
+        UserService,
+        SubjectService
     ]
 })
 export class UserModule { }

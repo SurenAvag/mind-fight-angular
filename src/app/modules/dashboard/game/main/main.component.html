@@ -13,7 +13,7 @@
 		</div>
 	</div>
 </app-content>
-<login-modal [opened]="modals.ended" (close)="modalClosed()">
+<login-modal [opened]="modals.ended" (close)="modalClosed()" [width]="450">
 	<div class="ended">
 		<div class="end-process" *ngIf="endProcess">
 			<div>Ձեր ժամանակն ավարտվեց</div>
@@ -21,13 +21,35 @@
 			<app-loader></app-loader>
 		</div>
 		<div class="response" *ngIf="!endProcess">
-			<div *ngIf="points != 0">
-				<div>Շնորհավորում ենք, դուք հավաքել եք {{points}} միավոր</div>
-				<div>Շարունակեք խաղալ ու ամրապնդել ձեր գիտելիքներն</div>
+			<div *ngIf="!game?.forTwoPlayer">
+				<div *ngIf="points != 0">
+					<div>Շնորհավորում ենք, դուք հավաքել եք {{points}} միավոր</div>
+					<div>Շարունակեք խաղալ ու ամրապնդել ձեր գիտելիքները</div>
+				</div>
+				<div *ngIf="!points">
+					<div>Ցավոք այս անգամ ձեր գիտելիքներն չբավարարեցին պատասխանելու մեր հարցերին</div>
+					<div>Ամրապնդեք ձեր գիտելիքները և փորձեք նորից</div>
+				</div>
 			</div>
-			<div *ngIf="points == 0">
-				<div>Ցավոք այս անգամ ձեր գիտելիքներն չբավարարեցին պատասխանելու մեր հարցերին</div>
-				<div>Ամրապնդեք ձեր գիտելիքներն և փորձեք նորից</div>
+			<div *ngIf="game?.forTwoPlayer">
+				<div *ngIf="game?.ended">
+					<div *ngIf="gameEndData.loserUser?.id == authUser.id">
+						<div>Ցավոք այս անգամ դուք պարտվեցիք և կորցրիք {{gameEndData.winnerPoint}} միավոր</div>
+						<div>Ամրապնդեք ձեր գիտելիքները և փորձեք նորից</div>
+					</div>
+					<div *ngIf="gameEndData.winnerUser?.id == authUser.id">
+						<div>Շնորհավորում ենք, դուք հաղթեցիք և ստացաք {{gameEndData.winnerPoint}} միավոր</div>
+						<div>Շարունակեք խաղալ ու ամրապնդել ձեր գիտելիքները</div>
+					</div>
+					<div *ngIf="!gameEndData.winnerUser && !gameEndData.loserUser">
+						<div>Խաղն ավարտվեց ոչ ոքի արդյուքով</div>
+						<div>Ամրապնդեք ձեր գիտելիքները և փորձեք նորից</div>
+					</div>
+				</div>
+				<div *ngIf="!game?.ended">
+					<div>Ձեր պատասխաններն ընդունված են</div>
+					<div>Խնդրում ենք սպասել մինչ ձեր մրցակիցը կավարտի մրցույթը</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -10,7 +10,8 @@ export class SubjectService extends CommonService {
         super();
     }
     
-    public getSubjects(query: string = ''): Promise<SubjectItems> {
+    public
+    getSubjects(query: string = ''): Promise<SubjectItems> {
         return this.http.get(`subject${query}`)
             .toPromise()
             .then((res: Response) => {

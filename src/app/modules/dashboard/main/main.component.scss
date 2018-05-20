@@ -5,6 +5,11 @@
 		font-size: 22px;
 		margin: 70px 0 0 70px;
 		line-height: 1.5;
+        &.analytics{
+            margin-left: 240px;
+            margin-top: 155px;
+            font-size: 17px;
+        }
 	}
 	.tournament{
 		display: inline-block;

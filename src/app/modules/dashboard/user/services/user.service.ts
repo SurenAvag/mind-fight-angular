@@ -30,11 +30,11 @@ export class UserService extends CommonService {
             .catch(this.handleError);
     }
     
-    public getUserKeyWordsGraph(subjectId) : Promise<any> {
-        return this.http.get(`get-key-words-graph/${subjectId}`)
+    public getUserKeyWordsGraph(subjectId, type) : Promise<any> {
+        return this.http.get(`get-key-words-graph/${subjectId}?type=${type}`)
             .toPromise()
             .then((res: Response) => {
-                return this.extractData(res, 'Graph');
+                return this.extractData(res);
             })
             .catch(this.handleError);
     }

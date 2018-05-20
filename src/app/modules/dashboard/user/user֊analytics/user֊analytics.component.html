@@ -1,5 +1,29 @@
 <div class="wrapper">
 	<app-content>
+		<div class="subject">
+			<p-dropdown [options]="subjects"
+			            [(ngModel)]="selectedSubject"
+			            optionLabel="name"
+			            (onChange)="subjectChanged($event)"
+			            [placeholder]="'Ընտրել առարկա'"></p-dropdown>
+			<p-dropdown [options]="types"
+			            [(ngModel)]="selectedType"
+			            optionLabel="name"
+			            (onChange)="typeChanged($event)"
+			            [placeholder]="'Ընտրել տեսակ'"></p-dropdown>
+			<div>
+				<app-loader *ngIf="loaded === false"></app-loader>
+			</div>
+			<div *ngIf="selectedSubject && loaded">
+				<div *ngIf="graphData.length == 0 && selectedType.value == 1 && !fullAnswered" class="not-found">
+					Առարկայի վերաբերյալ ճիշտ պատասխաններ դեռ չկան
+				</div>
+				<div *ngIf="(graphData.length == 0 && selectedType.value == 2) || (selectedType.value == 1 && fullAnswered)"
+				     class="not-found">
+					Առարկայի նյութն ամբողջապես յուռացված է
+				</div>
+			</div>
+		</div>
 		<div class="cytoscape-wrapper">
 			<div class="cytoscape" #cytoscape></div>
 		</div>

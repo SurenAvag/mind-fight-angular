@@ -4,6 +4,9 @@ import {GameService} from '../services/game.service';
 import {Game} from '../../models';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GameEnded} from '../interfaces/game-ended';
+import {User} from '../../../../models';
+import {AuthService} from '../../../../services';
+import {SocketService} from '../../../../services/socket.service';
 
 @Component({
     selector: 'app-main',
@@ -14,11 +17,12 @@ export class MainComponent extends BaseComponent implements OnInit {
     public answerIds: number[] = [];
     public loading: boolean = true;
     public gameInterval: any;
-    public game: any;
-    public endProcess: boolean = false;
+    public game: Game;
+    public endProcess: boolean;
     public points: number = 0;
     private gameId: number;
     public gameEndData: GameEnded;
+    public authUser: User;
     public modals = {
         ended: 0,
     };
@@ -26,14 +30,27 @@ export class MainComponent extends BaseComponent implements OnInit {
     constructor(
         private gameService: GameService,
         private router: Router,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private authService: AuthService,
+        private socketService: SocketService
     ) {
         super();
     }
     
     ngOnInit() {
         this.gameId = this.activatedRoute.snapshot.params['id'];
-        this.getGame()
+        this.authUser = this.authService.getUser();
+        this.getGame();
+        this.initSubscriptions();
+    }
+    
+    private initSubscriptions(): void {
+        this.socketService.socket$.subscribe((res) => {
+            if(res.name == 'game-ended') {
+                this.game.ended = true;
+                this.gameEndData = res.message;
+            }
+        });
     }
     
     private getGame(): void {
@@ -68,6 +85,7 @@ export class MainComponent extends BaseComponent implements OnInit {
     public endGame(): void {
         this.gameService.endGame(this.game.id, this.answerIds)
             .then((res: GameEnded) => {
+                this.game.ended = res.gameIsFinished;
                 this.endProcess = false;
                 this.points = Number(res.points);
                 this.gameEndData = res;
@@ -83,6 +101,13 @@ export class MainComponent extends BaseComponent implements OnInit {
     
     public modalClosed(): void {
         this.router.navigate(['/']);
+    }
+    
+    public ngOnDestroy(): void {
+        super.ngOnDestroy();
+        if(this.endProcess === undefined) {
+            this.endGame();
+        }
     }
     
 }
