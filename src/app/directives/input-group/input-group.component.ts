@@ -9,9 +9,11 @@ import {inputTypes} from '../../constants';
 export class InputGroupComponent implements OnInit {
 	@Input() public type: number = inputTypes.text;
 	@Input() public name: string = '';
+	@Input() public zIndex: number = 0;
 	@Input() public displayBy: string = '';
 	@Input() public value: string | number | boolean;
 	@Input() public disabled: boolean;
+	@Input() public items: any[];
 	@Output() public saving: EventEmitter<string | number | boolean> = new EventEmitter();
 	public inputTypes = inputTypes;
 	constructor() { }

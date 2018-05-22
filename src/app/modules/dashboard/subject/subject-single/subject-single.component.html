@@ -1,0 +1,17 @@
+<app-content>
+	<div class="subject">
+		<div class="name">
+			<input-group [name]="'name'"
+			             (saving)="saveSubject($event, 'name')"
+			             [value]="subject.name"></input-group>
+		</div>
+	</div>
+	<p-tabView>
+		<p-tabPanel header="Հարցեր">
+			<app-question-listing [subject]="subject"></app-question-listing>
+		</p-tabPanel>
+		<p-tabPanel header="Բանալիային բառեր">
+			<app-key-words [subject]="subject"></app-key-words>
+		</p-tabPanel>
+	</p-tabView>
+</app-content>

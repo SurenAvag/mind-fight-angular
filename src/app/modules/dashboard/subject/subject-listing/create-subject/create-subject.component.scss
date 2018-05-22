@@ -1,0 +1,25 @@
+.container{
+    .title {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .group {
+        width: 100%;
+        .name {
+            width: 30%;
+        }
+        .input {
+            padding-left: 5px;
+            width: 70%;
+            font-size: 16px;
+        }
+    }
+    .submit {
+        text-align: center;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+}

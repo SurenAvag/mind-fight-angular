@@ -1,0 +1,14 @@
+<div class="subjects">
+	<div class="content">
+		<div class="column name">Հարց</div>
+		<div class="column subject">Համար</div>
+		<div class="column subject">Ջնջել</div>
+	</div>
+	<app-single-subject *ngFor="let item of subjects; let i = index" [color]="getColor(i)"
+	                    [subject]="item"
+	                    (removing)="remove(i)"></app-single-subject>
+</div>
+<app-create-subject [opened]="modals.createSubject"></app-create-subject>
+<footer>
+	<app-button [classList]="'without-margin'" (click)="openModal('createSubject')">Գրանցել առարկա</app-button>
+</footer>

@@ -1,0 +1,18 @@
+<login-modal [opened]="opened" [width]="430">
+	<div class="container">
+		<div class="title">Գրանցել առարկա</div>
+		<div class="ui-inputgroup group">
+			<span class="ui-inputgroup-addon name">Անուն</span>
+			<input type="text" pInputText placeholder="Գրել" class="input" [(ngModel)]="subjectName">
+		</div>
+		<div class="submit">
+			<app-button [width]="'200px'"
+			            *ngIf="!loading; else loader"
+			            [height]="'30px'"
+			            (click)="createSubject()">Գրանցել</app-button>
+			<ng-template #loader>
+				<app-loader></app-loader>
+			</ng-template>
+		</div>
+	</div>
+</login-modal>

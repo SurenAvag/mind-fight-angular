@@ -1,0 +1,29 @@
+.content{
+    background-color: white;
+    margin-bottom: 3px;
+    opacity: 0.9;
+    width: 100%;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    .name{
+        cursor: pointer;
+        color: #3b6ce1;
+        width: 300px;
+    }
+    .column{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    .subject{
+        width: 300px;
+    }
+    .level{
+        width: 120px;
+    }
+    .fa{
+        cursor: pointer;
+    }
+}

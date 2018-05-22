@@ -1,0 +1,18 @@
+<div class="questions">
+	<app-button [width]="'200px'"
+	            (click)="openModal('createQuestion')"
+	            [height]="'30px'">Ավելացնել բանալի բառ</app-button>
+	<div class="content">
+		<div class="name column">Բառ</div>
+		<div class="subject column">Առարկա</div>
+		<div class="level column">Ջնջել</div>
+	</div>
+	<div class="content" *ngFor="let word of keyWords; let i = index"
+	     [style.backgroundColor]="getColor(i)">
+		<div class="name column">{{word?.name}}</div>
+		<div class="subject column">{{subject.name}}</div>
+		<div class="level column">
+			<i class="fa fa-trash"></i>
+		</div>
+	</div>
+</div>

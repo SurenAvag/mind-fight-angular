@@ -87,6 +87,7 @@ export class UserAnalyticsComponent implements OnInit {
     
     private initCytoscapeGraph(): void {
         this.loaded = true;
+        
         let cy = cytoscape({
             container: this.cytoscape.nativeElement,
             elements: this.graphData,

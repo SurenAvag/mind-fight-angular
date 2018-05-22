@@ -9,6 +9,8 @@ export class Question extends BaseModel {
     subject: any; //@Todo change to Subject model
     topic: any; //@Todo change to Subject model
     answers: any[]; //@Todo change to Subject model
+    subject_id: number;
+    topic_id: number;
     
     public static readonly LEVELS = {
         'easy': 1,
@@ -30,6 +32,15 @@ export class Question extends BaseModel {
 
     public static transform(data: any) : Question {
         return new Question(data);
+    }
+    
+    public static
+    getLevels(): any[] {
+        return [
+            {name: 'հեշտ', value: Question.LEVELS.easy},
+            {name: 'բարդ', value: Question.LEVELS.high},
+            {name: 'միջին', value: Question.LEVELS.middle},
+        ]
     }
     
     public getLevelName(): string {

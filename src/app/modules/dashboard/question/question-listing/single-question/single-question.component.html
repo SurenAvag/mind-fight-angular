@@ -1,5 +1,9 @@
+
 <div class="content" [style.backgroundColor]="color">
     <div class="name column" [routerLink]="'/question/' + question.id">{{question?.text}}</div>
 	<div class="subject column">{{question?.subject.name}}</div>
 	<div class="level column">{{question?.levelName}}</div>
+	<div class="level column">
+		<i class="fa fa-trash" (click)="remove()"></i>
+	</div>
 </div>

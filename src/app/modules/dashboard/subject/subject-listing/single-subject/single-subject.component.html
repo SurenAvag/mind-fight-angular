@@ -1,0 +1,8 @@
+<div class="content" [style.backgroundColor]="color">
+	<div class="column name" [routerLink]="'/subject/' + subject.id">{{subject?.name}}</div>
+	<div class="column subject">{{subject.id}}</div>
+	<div class="column subject">
+
+		<i class="fa fa-trash" (click)="remove()"></i>
+	</div>
+</div>

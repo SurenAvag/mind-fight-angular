@@ -9,7 +9,12 @@ $wheat: #95989A;
     align-items: center;
     padding-left: 30px;
     margin-bottom: 3px;
+    &.z-index{
+        position: relative;
+        z-index: 50;
+    }
     .input-container {
+        width: 600px;
         &.disabled{
             opacity: 0.3;
         }

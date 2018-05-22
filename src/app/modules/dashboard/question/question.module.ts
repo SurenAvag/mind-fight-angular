@@ -10,6 +10,8 @@ import {QuestionResolve} from './resolvers/question.resolve';
 import {SharedModule} from '../../shared';
 import {FormModule} from '../../shared/form.module';
 import {LoggedInModule} from '../../shared/logged-in.module';
+import { CreateQuestionComponent } from './question-listing/create-question/create-question.component';
+import {TopicService} from '../topic/services/topic.service';
 
 @NgModule({
     imports: [
@@ -22,11 +24,20 @@ import {LoggedInModule} from '../../shared/logged-in.module';
         QuestionComponent,
         QuestionListingComponent,
         SingleQuestionComponent,
-        QuestionSingleComponent
+        QuestionSingleComponent,
+        CreateQuestionComponent
     ],
     providers: [
         QuestionService,
-        QuestionResolve
+        QuestionResolve,
+        TopicService
+        
+    ],
+    exports: [
+        QuestionComponent,
+        QuestionListingComponent,
+        SingleQuestionComponent,
+        QuestionSingleComponent
     ]
 })
 export class QuestionModule { }

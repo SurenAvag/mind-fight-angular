@@ -1,9 +1,17 @@
 <div class="questions">
+	<app-button [width]="'200px'"
+	            (click)="openModal('createQuestion')"
+	            [height]="'30px'">Ավելացնել հարց</app-button>
 	<div class="content">
 		<div class="name column">Հարց</div>
 		<div class="subject column">Առարկա</div>
 		<div class="level column">Բարդություն</div>
+		<div class="level column">Ջնջել</div>
 	</div>
     <app-single-question *ngFor="let item of items; let i = index" [color]="getColor(i)"
+                         (removing)="remove(i)"
                          [question]="item"></app-single-question>
 </div>
+<app-create-question [opened]="modals.createQuestion"
+                     (questionCreated)="questionCreated($event)"
+                     [subject]="subject"></app-create-question>

@@ -1,4 +1,5 @@
 export abstract class BaseModel {
+    public id: number
 	public static transformCollection(data: Array<any>) : Array<any> {
 		let transformedData = [];
 		for(let item of data) {

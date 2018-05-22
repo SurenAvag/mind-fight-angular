@@ -26,6 +26,10 @@ const dashboardRoutes: Routes = [
                 path: 'game',
                 loadChildren: './game/game.module#GameModule',
             },
+            {
+                path: 'subject',
+                loadChildren: './subject/subject.module#SubjectModule',
+            },
         ],
     }
 ];

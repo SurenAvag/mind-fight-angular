@@ -19,11 +19,30 @@ export class QuestionService extends CommonService {
             .catch(this.handleError);
     }
     
+    public createQuestion(data): Promise<any> {
+        return this.http.post(`question`, data)
+            .toPromise()
+            .then((res: Response) => {
+                return this.extractData(res, 'Question');
+            })
+            .catch(this.handleError);
+    }
+    
     public getQuestion(id: number): Promise<any> {
         return this.http.get(`question/${id}`)
             .toPromise()
             .then((res: Response) => {
                 return this.extractData(res, 'Question');
+            })
+            .catch(this.handleError);
+    }
+    
+    public removeQuestion(id: number): Promise<any> {
+        return this.http.delete(`question/${id}`)
+            .toPromise()
+            .then((res: Response) => {
+                return this.extractData(res
+                );
             })
             .catch(this.handleError);
     }
