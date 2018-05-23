@@ -25,7 +25,7 @@ const subjectRoutes: Routes = [
                 children: [
                     {
                         path: 'question',
-                        loadChildren: './question/question.module#QuestionModule',
+                        loadChildren: '../question/question.module#QuestionModule',
                     }
                 ]
             }

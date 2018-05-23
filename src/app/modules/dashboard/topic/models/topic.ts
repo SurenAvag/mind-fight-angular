@@ -14,8 +14,3 @@ export class Topic extends BaseModel {
         return new Topic(data);
     }
 }
-
-export interface SubjectItems {
-    items: Topic[],
-    total: number
-}

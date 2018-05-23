@@ -47,8 +47,7 @@ export class TopicService extends CommonService {
             .catch(this.handleError);
     }
     
-    public removeSubject(subjectId: number): Promise<any>
-    {
+    public removeSubject(subjectId: number): Promise<any> {
         return this.http.delete(`subject/${subjectId}`)
             .toPromise()
             .then((res: Response) => {
@@ -56,3 +55,4 @@ export class TopicService extends CommonService {
             })
             .catch(this.handleError);
     }
+}
